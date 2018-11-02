@@ -1,4 +1,8 @@
 Spaceship raymond;
+boolean eightIsPressed = false;
+boolean fourIsPressed = false;
+boolean sixIsPressed = false;
+boolean fiveIsPressed = false;
 
 public void setup() {
   size(500, 500);
@@ -7,20 +11,44 @@ public void setup() {
 }
 
 public void draw() {
+  background(0);
   raymond.show();
   raymond.move();
+  spaceshipControls();
+}
+
+public void spaceshipControls() {
+  if(eightIsPressed == true){raymond.accelerate(1);}
+  if(fourIsPressed == true){raymond.turn(-10);}
+  if(sixIsPressed == true){raymond.turn(10);}
+  if(fiveIsPressed == true) {
+    raymond.setDirectionX(0);
+    raymond.setDirectionY(0);
+    raymond.setX((int)(Math.random() * 500) + 1);
+    raymond.setY((int)(Math.random() * 500) + 1);
+  }
 }
 
 public void keyPressed() {
-  if(key == 8){
-    raymond.accelerate(1);
+  if(key == '8'){
+    eightIsPressed = true;
+  } else if (key == '4'){
+    fourIsPressed = true;
+  } else if (key == '6'){
+    sixIsPressed = true;
+  } else if (key == '5'){
+    fiveIsPressed = true;
   }
-  
-  if(key == 4){
-    raymond.turn(-1);
-  }
-  
-  if(key == 6){
-    raymond.turn(1);
+}
+
+public void keyReleased() {
+  if(key == '8'){
+    eightIsPressed = false;
+  } else if (key == '4'){
+    fourIsPressed = false;
+  } else if (key == '6'){
+    sixIsPressed = false;
+  } else if (key == '5'){
+    fiveIsPressed = false;
   }
 }

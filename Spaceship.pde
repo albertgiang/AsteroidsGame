@@ -1,5 +1,5 @@
 class Spaceship extends Floater {   
-    Spaceship(){
+    public Spaceship(){
       myCenterX = 250;
       myCenterY= 250;
       myColor = 255;

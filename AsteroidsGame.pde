@@ -1,4 +1,6 @@
 Spaceship raymond;
+Star[] background = new Star[500];
+
 boolean eightIsPressed = false;
 boolean fourIsPressed = false;
 boolean sixIsPressed = false;
@@ -6,6 +8,11 @@ boolean sixIsPressed = false;
 public void setup() {
   size(500, 500);
   background(0);
+  
+  for(int i = 0; i < background.length; i++){
+    background[i] = new Star();
+  }
+  
   raymond = new Spaceship();
 }
 
@@ -14,6 +21,10 @@ public void draw() {
   raymond.show();
   raymond.move();
   spaceshipControls();
+  
+  for(int i = 0; i < background.length; i++){
+    background[i].show();
+  }
 }
 
 public void spaceshipControls() {

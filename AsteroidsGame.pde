@@ -28,7 +28,7 @@ public void draw() {
 }
 
 public void spaceshipControls() {
-  if(eightIsPressed == true){raymond.accelerate(1);}
+  if(eightIsPressed == true){raymond.accelerate(0.25);}
   if(fourIsPressed == true){raymond.turn(-10);}
   if(sixIsPressed == true){raymond.turn(10);}
 }
@@ -49,6 +49,10 @@ public void keyPressed() {
   }
   
   if (key == '5'){
+    for(int i = 0; i < background.length; i++){
+      background[i].resetStars();
+    }
+    
     raymond.setDirectionX(0);
     raymond.setDirectionY(0);
     raymond.setX((int)(Math.random() * 500) + 1);

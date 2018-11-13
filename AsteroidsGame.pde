@@ -1,5 +1,5 @@
 Spaceship raymond;
-Star[] background = new Star[500];
+Star[] emptySpace = new Star[500];
 
 boolean eightIsPressed = false;
 boolean fourIsPressed = false;
@@ -9,8 +9,8 @@ public void setup() {
   size(500, 500);
   background(0);
   
-  for(int i = 0; i < background.length; i++){
-    background[i] = new Star();
+  for(int i = 0; i < emptySpace.length; i++){
+    emptySpace[i] = new Star();
   }
   
   raymond = new Spaceship();
@@ -22,8 +22,8 @@ public void draw() {
   raymond.move();
   spaceshipControls();
   
-  for(int i = 0; i < background.length; i++){
-    background[i].show();
+  for(int i = 0; i < emptySpace.length; i++){
+    emptySpace[i].show();
   }
 }
 
@@ -49,8 +49,8 @@ public void keyPressed() {
   }
   
   if (key == '5'){
-    for(int i = 0; i < background.length; i++){
-      background[i].resetStars();
+    for(int i = 0; i < emptySpace.length; i++){
+      emptySpace[i].resetStars();
     }
     
     raymond.setDirectionX(0);

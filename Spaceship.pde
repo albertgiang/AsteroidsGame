@@ -126,8 +126,8 @@ class Spaceship extends Floater {
     
     if(eightIsPressed == true){
       fill(255, 0, 0);
-      ellipse((float)(myCenterX), (float)(myCenterY), 5, 5);
-      ellipse((float)(myCenterX), (float)(myCenterY), 5, 5);
+      ellipse((float)(myCenterX - 5), (float)(myCenterY - 2.5), 3, 3);
+      ellipse((float)(myCenterX - 5), (float)(myCenterY + 2.5), 3, 3);
     }
   }   
 

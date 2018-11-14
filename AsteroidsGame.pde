@@ -1,5 +1,6 @@
 Spaceship raymond;
-Star[] emptySpace = new Star[500];
+Star [] emptySpace = new Star[500];
+Asteroid [] andy = new Asteroid[25];
 
 boolean eightIsPressed = false;
 boolean fourIsPressed = false;
@@ -14,6 +15,10 @@ public void setup() {
   }
   
   raymond = new Spaceship();
+  
+  for(int i = 0; i < andy.length; i++){
+    andy[i] = new Asteroid();
+  }
 }
 
 public void draw() {
@@ -24,6 +29,11 @@ public void draw() {
   
   for(int i = 0; i < emptySpace.length; i++){
     emptySpace[i].show();
+  }
+  
+  for(int i = 0; i < andy.length; i++){
+    andy[i].show();
+    andy[i].move();
   }
 }
 

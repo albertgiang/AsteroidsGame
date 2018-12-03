@@ -8,14 +8,12 @@ class Asteroid extends Floater {
     myDirectionX = Math.random() * 6;
     myDirectionY = Math.random() * 6;
     myPointDirection = Math.random() * 2 * Math.PI;
-    myRotationSpeed = (int)(-1 * (Math.random() * 2));
+    myRotationSpeed = (int)(Math.random() * 7 - 3);
     
     corners = 32;
     xCorners = new int[corners];
     yCorners = new int[corners];
-    
-    //to do: convert this into for loop xy corners[i] using myX and Y multipler
-    
+     
     for(int i = 0; i < corners; i++){
       if(i < 8){
         xCorners[i] = (int)(Math.random() * 6 + 5);
@@ -43,15 +41,15 @@ class Asteroid extends Floater {
   public double getDirectionY(){return myDirectionY;}
   public void setPointDirection(int degrees){myPointDirection = degrees;}
   public double getPointDirection(){return myPointDirection;}
- 
- public void move ()   //move the floater in the current direction of travel
+  
+  public void move ()   //move the floater in the current direction of travel
   {      
     //change the x and y coordinates by myDirectionX and myDirectionY       
     myCenterX += myDirectionX;    
     myCenterY += myDirectionY;     
 
     //wrap around screen    
-    if(myCenterX >width)
+    if(myCenterX > width)
     {     
       myCenterX = 0;    
     }    
@@ -67,14 +65,8 @@ class Asteroid extends Floater {
     else if (myCenterY < 0)
     {     
       myCenterY = height;    
-    }   
+    }
+    
+    myPointDirection+=myRotationSpeed;
   }   
- 
-  /*
-  public void turn (int nDegreesOfRotation)   
-  {     
-    //rotates the floater by a given number of degrees    
-    myPointDirection+=nDegreesOfRotation;   
-  }   
-  */
 }

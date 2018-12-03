@@ -1,6 +1,6 @@
 Spaceship raymond;
 Star [] emptySpace = new Star[500];
-Asteroid [] andy = new Asteroid[25];
+ArrayList <Asteroid> andy = new ArrayList <Asteroid>();
 
 boolean eightIsPressed = false;
 boolean fourIsPressed = false;
@@ -16,8 +16,8 @@ public void setup() {
   
   raymond = new Spaceship();
   
-  for(int i = 0; i < andy.length; i++){
-    andy[i] = new Asteroid();
+  for(int i = 0; i < 25; i++){
+    andy.add(new Asteroid());
   }
 }
 
@@ -26,14 +26,15 @@ public void draw() {
   raymond.show();
   raymond.move();
   spaceshipControls();
+  shipHitsAsteroid();
   
   for(int i = 0; i < emptySpace.length; i++){
     emptySpace[i].show();
   }
   
-  for(int i = 0; i < andy.length; i++){
-    andy[i].show();
-    andy[i].move();
+  for(int i = 0; i < andy.size(); i++){
+    andy.get(i).show();
+    andy.get(i).move();
   }
 }
 
@@ -77,5 +78,12 @@ public void keyReleased() {
     fourIsPressed = false;
   } else if (key == '6'){
     sixIsPressed = false;
+  }
+  
+}
+
+public void shipHitsAsteroid() {
+  for(int i = 0; i < andy.size(); i++){
+    
   }
 }

@@ -1,10 +1,12 @@
 Spaceship raymond;
 Star [] emptySpace = new Star[500];
 ArrayList <Asteroid> andy = new ArrayList <Asteroid>();
+ArrayList <Bullet> david = new ArrayList <Bullet>();
 
 boolean eightIsPressed = false;
 boolean fourIsPressed = false;
 boolean sixIsPressed = false;
+boolean fIsPressed = false;
 
 public void setup() {
   size(500, 500);
@@ -36,6 +38,11 @@ public void draw() {
     andy.get(i).show();
     andy.get(i).move();
   }
+  
+  for(int i = 0; i < david.size(); i++){
+    david.get(i).show();
+    david.get(i).move();
+  }
 }
 
 public void spaceshipControls() {
@@ -50,6 +57,12 @@ public void spaceshipEffects() {
   }
 }
 
+public void fireLasers() {
+  if (fIsPressed == true){
+    david.add(new Bullet(raymond));
+  }
+}
+
 public void keyPressed() {
   if(key == '8'){
     eightIsPressed = true;
@@ -57,6 +70,8 @@ public void keyPressed() {
     fourIsPressed = true;
   } else if (key == '6'){
     sixIsPressed = true;
+  } else if (key == 'f'){
+    fIsPressed = true;
   }
   
   if (key == '5'){
@@ -78,12 +93,17 @@ public void keyReleased() {
     fourIsPressed = false;
   } else if (key == '6'){
     sixIsPressed = false;
+  } else if (key == 'f'){
+    fIsPressed = false;
   }
   
 }
 
 public void shipHitsAsteroid() {
   for(int i = 0; i < andy.size(); i++){
-    
+    double distance = dist(raymond.getX(), raymond.getY(), andy.get(i).getX(), andy.get(i).getY());
+    if(distance < 10){
+      andy.remove(i);
+    }
   }
 }

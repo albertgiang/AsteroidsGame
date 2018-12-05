@@ -15,15 +15,7 @@ class Bullet extends Floater {
     xCorners[0] = 0;
     yCorners[0] = 0;
    }
-    
-  public void show ()  //Draws the floater at the current position  
-  {             
-    super.show();
-    
-    if (fIsPressed == true){
-      ellipse((float)myCenterX, (float)myCenterY, 10, 10);
-    }
-  }   
+   
     
   public void setX(int x){myCenterX = x;}
   public int getX(){return (int)myCenterX;}

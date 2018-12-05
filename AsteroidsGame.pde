@@ -3,9 +3,9 @@ Star [] emptySpace = new Star[500];
 ArrayList <Asteroid> andy = new ArrayList <Asteroid>();
 ArrayList <Bullet> david = new ArrayList <Bullet>();
 
-boolean eightIsPressed = false;
-boolean fourIsPressed = false;
-boolean sixIsPressed = false;
+boolean wIsPressed = false;
+boolean aIsPressed = false;
+boolean dIsPressed = false;
 boolean fIsPressed = false;
 
 public void setup() {
@@ -29,6 +29,7 @@ public void draw() {
   raymond.move();
   spaceshipControls();
   shipHitsAsteroid();
+  fireLasers();
   
   for(int i = 0; i < emptySpace.length; i++){
     emptySpace[i].show();
@@ -46,13 +47,13 @@ public void draw() {
 }
 
 public void spaceshipControls() {
-  if(eightIsPressed == true){raymond.accelerate(0.25);}
-  if(fourIsPressed == true){raymond.turn(-10);}
-  if(sixIsPressed == true){raymond.turn(10);}
+  if(wIsPressed == true){raymond.accelerate(0.25);}
+  if(aIsPressed == true){raymond.turn(-10);}
+  if(dIsPressed == true){raymond.turn(10);}
 }
 
 public void spaceshipEffects() {
-  if(eightIsPressed == true){
+  if(wIsPressed == true){
     
   }
 }
@@ -61,15 +62,22 @@ public void fireLasers() {
   if (fIsPressed == true){
     david.add(new Bullet(raymond));
   }
+  
+  for(int i = 0; i < david.size(); i++){
+    if(david.get(i).getX() > width){
+      david.remove(i);
+      println("bullet removed");
+    }
+  }
 }
 
 public void keyPressed() {
-  if(key == '8'){
-    eightIsPressed = true;
-  } else if (key == '4'){
-    fourIsPressed = true;
-  } else if (key == '6'){
-    sixIsPressed = true;
+  if(key == 'w'){
+    wIsPressed = true;
+  } else if (key == 'a'){
+    aIsPressed = true;
+  } else if (key == 'd'){
+    dIsPressed = true;
   } else if (key == 'f'){
     fIsPressed = true;
   }
@@ -87,12 +95,12 @@ public void keyPressed() {
 }
 
 public void keyReleased() {
-  if(key == '8'){
-    eightIsPressed = false;
-  } else if (key == '4'){
-    fourIsPressed = false;
-  } else if (key == '6'){
-    sixIsPressed = false;
+  if(key == 'w'){
+    wIsPressed = false;
+  } else if (key == 'a'){
+    aIsPressed = false;
+  } else if (key == 'd'){
+    dIsPressed = false;
   } else if (key == 'f'){
     fIsPressed = false;
   }

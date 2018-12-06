@@ -18,7 +18,7 @@ public void setup() {
   
   raymond = new Spaceship();
   
-  for(int i = 0; i < 25; i++){
+  for(int i = 0; i < 1000; i++){
     andy.add(new Asteroid());
   }
 }
@@ -28,7 +28,7 @@ public void draw() {
   raymond.show();
   raymond.move();
   spaceshipControls();
-  shipHitsAsteroid();
+  destroyAsteroid();
   fireLasers();
   
   for(int i = 0; i < emptySpace.length; i++){
@@ -64,9 +64,8 @@ public void fireLasers() {
   }
   
   for(int i = 0; i < david.size(); i++){
-    if(david.get(i).getX() > width){
+    if(david.get(i).getX() > width || david.get(i).getX() < 0 || david.get(i).getY() > height || david.get(i).getY() < 0){
       david.remove(i);
-      println("bullet removed");
     }
   }
 }
@@ -107,11 +106,21 @@ public void keyReleased() {
   
 }
 
-public void shipHitsAsteroid() {
+public void destroyAsteroid() {
   for(int i = 0; i < andy.size(); i++){
-    double distance = dist(raymond.getX(), raymond.getY(), andy.get(i).getX(), andy.get(i).getY());
-    if(distance < 10){
+    double shipDistance = dist(raymond.getX(), raymond.getY(), andy.get(i).getX(), andy.get(i).getY());
+    if(shipDistance < 10){
       andy.remove(i);
+    }
+  }
+  
+  for(int k = david.size() - 1; k > 0; k--){
+    for(int i = andy.size() - 1; i > 0; i--){
+      double laserDistance  = dist(david.get(k).getX(), david.get(k).getY(), andy.get(i).getX(), andy.get(i).getY());
+      if(laserDistance < 10){
+        andy.remove(i);
+        david.remove(k);
+      }
     }
   }
 }

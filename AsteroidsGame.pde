@@ -117,9 +117,11 @@ public void destroyAsteroid() {
   for(int k = david.size() - 1; k > 0; k--){
     for(int i = andy.size() - 1; i > 0; i--){
       double laserDistance  = dist(david.get(k).getX(), david.get(k).getY(), andy.get(i).getX(), andy.get(i).getY());
+      
       if(laserDistance < 10){
         andy.remove(i);
         david.remove(k);
+        break;
       }
     }
   }

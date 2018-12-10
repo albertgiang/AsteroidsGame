@@ -8,12 +8,14 @@ class Bullet extends Floater {
     myDirectionX = 5 * Math.cos(dRadians) + raymond.getDirectionX();
     myDirectionY = 5 * Math.sin(dRadians) + raymond.getDirectionY();
     
-    corners = 1;
+    corners = 2;
     xCorners = new int[corners];
     yCorners = new int[corners];
     
-    xCorners[0] = 0;
-    yCorners[0] = 0;
+    xCorners[0] = 4;
+    yCorners[0] = 3;
+    xCorners[1] = 4;
+    yCorners[1] = -3;
    }
    
    public void move ()   //move the floater in the current direction of travel

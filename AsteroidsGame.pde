@@ -18,7 +18,7 @@ public void setup() {
   
   raymond = new Spaceship();
   
-  for(int i = 0; i < 1000; i++){
+  for(int i = 0; i < 10; i++){
     andy.add(new Asteroid());
   }
 }
@@ -59,8 +59,10 @@ public void spaceshipEffects() {
 }
 
 public void fireLasers() {
-  if (fIsPressed == true){
-    david.add(new Bullet(raymond));
+  int counter = 0;
+  if(fIsPressed == true && counter == 0){
+     david.add(new Bullet(raymond));
+     counter+= 10;
   }
   
   for(int i = 0; i < david.size(); i++){
@@ -103,7 +105,6 @@ public void keyReleased() {
   } else if (key == 'f'){
     fIsPressed = false;
   }
-  
 }
 
 public void destroyAsteroid() {
@@ -114,8 +115,8 @@ public void destroyAsteroid() {
     }
   }
   
-  for(int k = david.size() - 1; k > 0; k--){
-    for(int i = andy.size() - 1; i > 0; i--){
+  for(int k = david.size() - 1; k >= 0; k--){
+    for(int i = andy.size() - 1; i >= 0; i--){
       double laserDistance  = dist(david.get(k).getX(), david.get(k).getY(), andy.get(i).getX(), andy.get(i).getY());
       
       if(laserDistance < 10){

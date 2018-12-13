@@ -2,8 +2,8 @@ class Asteroid extends Floater {
   private int myRotationSpeed, myXMultiplier, myYMultiplier;
   
   public Asteroid(){
-    myCenterX = Math.random() * 501;
-    myCenterY = Math.random() * 501;
+    myCenterX = Math.random() * 1001;
+    myCenterY = Math.random() * 1001;
     myColor = 144;
     myDirectionX = Math.random() * 6;
     myDirectionY = Math.random() * 6;

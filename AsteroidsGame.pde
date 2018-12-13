@@ -1,5 +1,5 @@
 Spaceship raymond;
-Star [] emptySpace = new Star[500];
+Star [] emptySpace = new Star[1000];
 ArrayList <Asteroid> andy = new ArrayList <Asteroid>();
 ArrayList <Bullet> david = new ArrayList <Bullet>();
 
@@ -10,7 +10,7 @@ boolean fIsPressed = false;
 int laserCounter = 0;
 
 public void setup() {
-  size(500, 500);
+  size(1000, 1000);
   background(0);
   
   for(int i = 0; i < emptySpace.length; i++){
@@ -19,7 +19,7 @@ public void setup() {
   
   raymond = new Spaceship();
   
-  for(int i = 0; i < 100; i++){
+  for(int i = 0; i < 50; i++){
     andy.add(new Asteroid());
   }
 }
@@ -53,19 +53,18 @@ public void spaceshipControls() {
   if(dIsPressed == true){raymond.turn(10);}
 }
 
-public void spaceshipEffects() {
-  if(wIsPressed == true){
-    
-  }
-}
-
 public void fireLasers() {
-  if(fIsPressed == true && laserCounter == 0){
-     david.add(new Bullet(raymond));
-     laserCounter+= 1;
-     if(laserCounter == 10){
-       laserCounter = 0;
-     }
+  
+  
+  if(fIsPressed == true){
+    laserCounter++;
+  }
+  
+  if(laserCounter == 10){
+    laserCounter = 0;
+    if(laserCounter == 0){
+       david.add(new Bullet(raymond));
+    }
   }
   
   for(int i = 0; i < david.size(); i++){
@@ -92,8 +91,8 @@ public void keyPressed() {
     }
     
     for(int k = 0; k < andy.size(); k++){
-      int newX = (int)(Math.random() * 501);
-      int newY = (int)(Math.random() * 501); 
+      int newX = (int)(Math.random() * 1001);
+      int newY = (int)(Math.random() * 1001); 
       andy.get(k).setX(newX);
       andy.get(k).setY(newY);
     }
@@ -105,8 +104,8 @@ public void keyPressed() {
     
     raymond.setDirectionX(0);
     raymond.setDirectionY(0);
-    raymond.setX((int)(Math.random() * 500) + 1);
-    raymond.setY((int)(Math.random() * 500) + 1);
+    raymond.setX((int)(Math.random() * 1000) + 1);
+    raymond.setY((int)(Math.random() * 1000) + 1);
   }
 }
 
